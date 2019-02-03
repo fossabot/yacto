@@ -22,12 +22,12 @@ defmodule MigratorTest do
        Yacto.Migration.Structure.from_schema(Migrator.Player3)}
     ]
 
-    for {v, version} <- [
-          {v1, 20_170_424_162_530},
-          {v2, 20_170_424_162_533},
-          {v3, 20_170_424_162_534}
+    for {v, version, preview_version} <- [
+          {v1, 20_170_424_162_530, nil},
+          {v2, 20_170_424_162_533, 20_170_424_162_530},
+          {v3, 20_170_424_162_534, 20_170_424_162_533}
         ] do
-      source = Yacto.Migration.GenMigration.generate_source(Migrator, v, version)
+      source = Yacto.Migration.GenMigration.generate_source(Migrator, v, version, preview_version)
 
       try do
         File.write!("migration_test.exs", source)
@@ -85,9 +85,9 @@ defmodule MigratorTest do
        Yacto.Migration.Structure.from_schema(Migrator.Player2)}
     ]
 
-    source = Yacto.Migration.GenMigration.generate_source(Migrator, v1, 20_170_424_162_530)
+    source = Yacto.Migration.GenMigration.generate_source(Migrator, v1, 20_170_424_162_530, nil)
     File.write!("migration_test_1.exs", source)
-    source = Yacto.Migration.GenMigration.generate_source(Migrator, v2, 20_170_424_162_533)
+    source = Yacto.Migration.GenMigration.generate_source(Migrator, v2, 20_170_424_162_533, 20_170_424_162_530)
     File.write!("migration_test_2.exs", source)
 
     try do
