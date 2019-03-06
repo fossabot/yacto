@@ -1,4 +1,6 @@
 # Yacto
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FRevFossa%2Fyacto.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FRevFossa%2Fyacto?ref=badge_shield)
+
 
 Yacto は、[Ecto](https://hexdocs.pm/ecto/Ecto.html) で使いにくかった部分をサポートするためのライブラリです。
 
@@ -350,3 +352,7 @@ end
 `get_by_or_insert_for_update/4` は、`get_by_or_new/4` の排他ロックを取るバージョンです。
 まずレコードを取得してみて、あればそのレコードを、無ければ新規に `default_struct_or_changeset` を挿入して返します。この時、返されるレコードは排他ロックされます。
 戻り値は `{record, created}` の２要素のタプルになっていて、1要素目には取得できたレコード（あるいは挿入したデフォルト値）が、2要素目には新しく挿入したかどうかのフラグが設定されます。
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FRevFossa%2Fyacto.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FRevFossa%2Fyacto?ref=badge_large)
